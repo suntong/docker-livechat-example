@@ -17,5 +17,8 @@ COPY / /root
 
 RUN REPEATABLE docker-compose up -d --build --force-recreate --remove-orphans && sleep 6
 
+SECRET ENV UPDATE_KEY
+RUN curl -sL https://freedns.afraid.org/dynamic/update.php?$UPDATE_KEY
+
 EXPOSE WEBSITE localhost:8000
 
